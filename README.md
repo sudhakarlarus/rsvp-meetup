@@ -1,15 +1,17 @@
 # rsvp-meetup
 
 ## Description
-rsvp-meetup location finder, provides the endpoints to get the top trending meetup locations based on 
-realtime processing of meetup rsvp feeds.
-### rsvp-meetup consists of following three microservices
+RSVP-Meetup Location Finder provides the endpoints to get the top trending meetup locations based on real-time processing of meetup RSVP feeds.
+### _rsvp-meetup consists of following three microservices_
 * **rsvp-generator** - for generating real-time rsvp feeds based on the provided meetup.json file
 * **rsvp-stream-processor** - processes real-time feeds from rsvp generator, and stores processed result in db
 * **rsvp-api** - provides endpoint to get the top trending locations for meetup.
 ## High level design
 
 ![](doc/high-level.png)
+
+**Go concurrency processing**
+![](doc/concurrency.png)
 ## Installation
 ### Prerequisite
 * Golang 1.19 and above
@@ -63,12 +65,10 @@ Once all the services are up and running, use this [Postman](doc/RSVP.postman_co
 10. Dedicated db **indexing** for the faster result retrieval.
 
 ## Improvements
-1. Alternatively, rsvp-stream-processor service can be replaced with Apache Spark streaming tool.
+1. Alternatively, **rsvp-stream-processor** service can be replaced with Apache Spark streaming tool.
 2. Increasing the performance by profiling on the resource operations, using **go pprof** tool.
-3. Adding new and readable error handling messages.
-4. Adding more api endpoints filters to provide results based on the user **location**, **distance**, **groups** etc..
-5. Auth and refresh **token** implementation for the user authentication.
-6. Adding more testcases to the entire flow of the processing.
+3. Adding more api endpoints filters to provide results based on the user **location**, **distance**, **groups** etc..
+4. Adding more error handling, testcases to the entire flow of the processing.
 
 ## Contact
 For any discussion or feedback, please free to reach me over
