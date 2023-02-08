@@ -16,6 +16,9 @@ RSVP-Meetup Location Finder provides the endpoints to get the top trending meetu
 ### Prerequisite
 * Golang 1.19 and above
 * Docker v20.10.14 and above.
+* MongoDB latest
+* Kafka latest version
+* Zookeeper latest version
 * Extract all the _**“**.zip”**_ file from ./services-repo directory. 
 * Each **service-repo** folder might include handler, config, stream and other supporting modules based on the scope of the service.
 * To run every service from the hosted images, try running the **docker-compose.yaml** file from **../rsvp-meetup/**.
@@ -49,6 +52,13 @@ rsvp-meetup-db-1                     | {"t":{"$date":"2023-02-08T02:02:54.498+00
 rsvp-meetup-db-1                     | {"t":{"$date":"2023-02-08T02:02:54.501+00:00"},"s":"I",  "c":"NETWORK",  "id":4648601, "ctx":"main","msg":"Implicit TCP FastOpen unavailable. If TCP FastOpen is required, set tcpFastOpenServer, tcpFastOpenClient, and tcpFastOpenQueueSize."}
 ```
 Once all the services are up and running, use this [Postman](doc/RSVP.postman_collection.json) file to try the **/location** API endpoint.
+
+**Note:**
+Use the docker host machine ip address for the kafka env value `KAFKA_ADVERTISED_HOST_NAME` in docker-compose.yaml file.
+
+`Eg: KAFKA_ADVERTISED_HOST_NAME: 172.23.192.1`
+
+
 ### screenshots:
 ![img.png](doc/location_api.png)
 
